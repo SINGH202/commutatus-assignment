@@ -4,6 +4,8 @@ import { useCallback, useEffect, useState } from "react";
 import { SearchBar } from "@/components/SearchBar";
 import { debounce } from "../../utils";
 import { MemberCard } from "@/components/MemberCard";
+import { config } from "./api/config";
+import { TeamTypeEncloser } from "@/components/TeamTypeEncloser";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,8 +31,18 @@ export default function Home() {
         searchText={searchText}
         setSearchText={(text) => handleChange(text)}
       />
-      <div className="p-5 md:p-10 border border-black w-full">
-        <MemberCard name={""} role={""} email={""} phone={0} />
+      <div className="p-5 md:p-10 w-full">
+        <MemberCard
+          name={config?.ceo.name}
+          role={config?.ceo?.role}
+          email={config?.ceo?.email}
+          phone={config?.ceo?.phone}
+          teamName={""}
+        />
+
+        <TeamTypeEncloser teamType={"HR"} teams={config?.hr} />
+        <TeamTypeEncloser teamType={"Engineer"} teams={config?.engineering} />
+        <TeamTypeEncloser teamType={"Design"} teams={config?.design} />
       </div>
     </main>
   );
