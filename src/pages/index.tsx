@@ -1,10 +1,8 @@
-import Image from "next/image";
 import { Inter } from "next/font/google";
 import { useCallback, useEffect, useState } from "react";
 import { SearchBar } from "@/components/SearchBar";
-import { debounce } from "../../utils";
+import { addData, debounce, getData } from "../../utils";
 import { MemberCard } from "@/components/MemberCard";
-import { config } from "./api/config";
 import { TeamTypeEncloser } from "@/components/TeamTypeEncloser";
 import { useMembersContext } from "@/context/MembersContext";
 
@@ -26,7 +24,17 @@ export default function Home() {
   );
 
   useEffect(() => {
-    setData(config);
+    try {
+      if (localStorage.getItem("members_data") === null) {
+        addData();
+      }
+      let localData = getData();
+      console.timeLog(localData);
+      setData(localData);
+    } catch (error) {
+      console.log(error);
+      return;
+    }
   }, []);
 
   return (

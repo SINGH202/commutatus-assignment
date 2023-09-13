@@ -1,4 +1,17 @@
+import { config } from "@/pages/api/config";
 import { MemberCardProps } from "./types";
+
+export const getData = () => {
+  const data = localStorage.getItem("members_data");
+  if (!data) {
+    return;
+  }
+  return JSON.parse(data);
+};
+
+export const addData = () => {
+  localStorage.setItem("members_data", JSON.stringify(config));
+};
 
 export function debounce(
   func: Function,
