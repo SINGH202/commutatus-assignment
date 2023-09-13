@@ -27,7 +27,7 @@ export const Teams = ({ teams }: TeamTypeEncloserProps) => {
       <div className="flex flex-col gap-5 ml-14">
         {teamNames.map((teamName, index) => (
           <Team
-            key={`${index}`}
+            key={`team-${index}`}
             teamName={teamName}
             members={teams.filter(
               (team) => teamName === team.teamName && team?.role !== "Head"

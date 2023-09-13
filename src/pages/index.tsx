@@ -6,12 +6,13 @@ import { debounce } from "../../utils";
 import { MemberCard } from "@/components/MemberCard";
 import { config } from "./api/config";
 import { TeamTypeEncloser } from "@/components/TeamTypeEncloser";
+import { useMembersContext } from "@/context/MembersContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [searchText, setSearchText] = useState("");
-
+  const { data, setData, isLoading } = useMembersContext();
   const handleChange = (text: string) => {
     setSearchText(text);
     handleSearch(text);
@@ -24,6 +25,10 @@ export default function Home() {
     []
   );
 
+  useEffect(() => {
+    setData(config);
+  }, []);
+
   return (
     <main
       className={`flex min-h-screen flex-col items-center gap-5 ${inter.className}`}>
@@ -31,19 +36,26 @@ export default function Home() {
         searchText={searchText}
         setSearchText={(text) => handleChange(text)}
       />
-      <div className="p-5 md:p-10 w-full">
-        <MemberCard
-          name={config?.ceo.name}
-          role={config?.ceo?.role}
-          email={config?.ceo?.email}
-          phone={config?.ceo?.phone}
-          teamName={""}
-        />
+      {isLoading ? (
+        "Loading..."
+      ) : (
+        <div className="p-5 md:p-10 w-full">
+          <MemberCard
+            name={data?.ceo.name}
+            role={data?.ceo?.role}
+            email={data?.ceo?.email}
+            phone={data?.ceo?.phone}
+            teamName={""}
+          />
 
-        <TeamTypeEncloser teamType={"HR"} teams={config?.hr} />
-        <TeamTypeEncloser teamType={"Engineer"} teams={config?.engineering} />
-        <TeamTypeEncloser teamType={"Design"} teams={config?.design} />
-      </div>
+          <TeamTypeEncloser teamType={"HR"} teams={data?.hr} />
+          <TeamTypeEncloser
+            teamType={"Engineering"}
+            teams={data?.engineering}
+          />
+          <TeamTypeEncloser teamType={"Design"} teams={data?.design} />
+        </div>
+      )}
     </main>
   );
 }

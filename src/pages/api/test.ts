@@ -1,19 +1,17 @@
-import { MemberCardProps } from "../../../types";
-
-export const config = {
+const config = {
   ceo: {
     id: "1",
     name: "Ram",
-    phone: "9998887887",
+    phone: 9998887887,
     email: "ram@gmail.com",
     role: "CEO",
     teamName: "",
-  } as MemberCardProps,
+  },
   hr: [
     {
       id: "2",
       name: "Raman",
-      phone: "9998887887",
+      phone: 9998887887,
       email: "ram@gmail.com",
       role: "Head",
       teamName: "Lords",
@@ -21,7 +19,7 @@ export const config = {
     {
       id: "13",
       name: "Abhay",
-      phone: "9998887887",
+      phone: 9998887887,
       email: "ram@gmail.com",
       role: "Leader",
       teamName: "Lords",
@@ -29,7 +27,7 @@ export const config = {
     {
       id: "3",
       name: "Radha",
-      phone: "9998887887",
+      phone: 9998887887,
       email: "ram@gmail.com",
       role: "Member",
       teamName: "Lords",
@@ -37,7 +35,7 @@ export const config = {
     {
       id: "4",
       name: "Raman",
-      phone: "9998887887",
+      phone: 9998887887,
       email: "ram@gmail.com",
       role: "Leader",
       teamName: "Lords2",
@@ -45,17 +43,17 @@ export const config = {
     {
       id: "5",
       name: "Radha",
-      phone: "9998887887",
+      phone: 9998887887,
       email: "ram@gmail.com",
       role: "Member",
       teamName: "Lords2",
     },
-  ] as MemberCardProps[],
+  ],
   engineering: [
     {
       id: "6",
       name: "Ramesh",
-      phone: "9998887887",
+      phone: 9998887887,
       email: "ram@gmail.com",
       role: "Head",
       teamName: "Geeks",
@@ -63,7 +61,7 @@ export const config = {
     {
       id: "7",
       name: "Jerry",
-      phone: "9998887887",
+      phone: 9998887887,
       email: "ram@gmail.com",
       role: "Leader",
       teamName: "Geeks1",
@@ -71,7 +69,7 @@ export const config = {
     {
       id: "8",
       name: "Rajesh",
-      phone: "9998887887",
+      phone: 9998887887,
       email: "ram@gmail.com",
       role: "Member",
       teamName: "Geeks1",
@@ -79,7 +77,7 @@ export const config = {
     {
       id: "9",
       name: "Ramesh",
-      phone: "9998887887",
+      phone: 9998887887,
       email: "ram@gmail.com",
       role: "Leader",
       teamName: "Geeks",
@@ -87,7 +85,7 @@ export const config = {
     {
       id: "10",
       name: "Rajesh",
-      phone: "9998887887",
+      phone: 9998887887,
       email: "ram@gmail.com",
       role: "Member",
       teamName: "Geeks",
@@ -95,7 +93,7 @@ export const config = {
     {
       id: "16",
       name: "Amar",
-      phone: "9998887887",
+      phone: 9998887887,
       email: "ram@gmail.com",
       role: "Member",
       teamName: "Geeks",
@@ -103,17 +101,17 @@ export const config = {
     {
       id: "17",
       name: "Aman",
-      phone: "9998887887",
+      phone: 9998887887,
       email: "ram@gmail.com",
       role: "Member",
       teamName: "Geeks",
     },
-  ] as MemberCardProps[],
+  ],
   design: [
     {
       id: "11",
       name: "Raju",
-      phone: "9998887887",
+      phone: 9998887887,
       email: "ram@gmail.com",
       role: "Head",
       teamName: "Falcons",
@@ -121,7 +119,7 @@ export const config = {
     {
       id: "14",
       name: "Sumit",
-      phone: "9998887887",
+      phone: 9998887887,
       email: "ram@gmail.com",
       role: "Leader",
       teamName: "Falcons",
@@ -129,10 +127,12 @@ export const config = {
     {
       id: "12",
       name: "Rajnesh",
-      phone: "9998887887",
+      phone: 9998887887,
       email: "ram@gmail.com",
       role: "Member",
       teamName: "Falcons",
     },
-  ] as MemberCardProps[],
+  ],
 };
+const newConfig = { ...config, hr: [...config["hr"], { test: "test" }] };
+console.log(newConfig);
