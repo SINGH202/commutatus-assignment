@@ -1,11 +1,6 @@
 import Image from "next/image";
-import {
-  MemberCardProps,
-  TeamTypeEncloserProps,
-  TextButtonStatus,
-} from "../../types";
-import { useEffect, useState } from "react";
-import { MemberCard } from "./MemberCard";
+import { TeamTypeEncloserProps, TextButtonStatus } from "../../types";
+import { useState } from "react";
 import { Teams } from "./Teams";
 import { TextButton } from "./TextButton";
 import { AddTeamPopup } from "./AddTeamPopup";

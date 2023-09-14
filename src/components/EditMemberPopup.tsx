@@ -6,10 +6,11 @@ import {
 } from "../../types";
 import { TextButton } from "./TextButton";
 import { InputWithLabel } from "./InputWithLabel";
-import { isValidEmail } from "../../utils";
+import { getTeamNames, isValidEmail } from "../../utils";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { useMembersContext } from "@/context/MembersContext";
+import { DropDown } from "./DropDown";
 
 export const EditMemberPopup = ({
   teamType,
@@ -18,6 +19,8 @@ export const EditMemberPopup = ({
 }: EditMemberPopupProps) => {
   const { data, setData } = useMembersContext();
   const type = teamType?.toLocaleLowerCase() || "";
+
+  const teamNames = getTeamNames(data[type]);
 
   const [formData, setFormData] = useState({
     id: memberData?.id,
@@ -33,7 +36,6 @@ export const EditMemberPopup = ({
     let memberWithChange = membersData.find(
       (member: MemberCardProps) => member?.id === memberData?.id
     );
-    // console.log(memberWithChange);
     const remainingMembers = membersData.filter(
       (member: MemberCardProps) => member?.id !== memberData?.id
     );
@@ -45,18 +47,19 @@ export const EditMemberPopup = ({
 
   return (
     <div className="flex flex-col items-center p-10 gap-5 popup opacity-90 text-black">
-      {/* <InputWithLabel
-        label={"Team Name"}
-        placeholder={"Enter Team Name"}
-        type={"text"}
-        onChange={(value) => {
-          setFormData({ ...formData, teamName: value.target.value });
-        }}
-        // isInvalid={isTeamAlreadyExists(formData?.teamName, data[type])}
-        errorText="Team already exists"
-        value={formData?.teamName}
-      /> */}
-      {/* <div className="border border-gray-400 w-full"></div> */}
+      {memberData?.role !== "Leader" && (
+        <>
+          <DropDown
+            label="Select Team"
+            selectedOption={formData?.teamName}
+            setSelectedOption={(teamName) => {
+              setFormData({ ...formData, teamName: teamName });
+            }}
+            availableOptions={teamNames}
+          />
+          <div className="border border-gray-400 w-full"></div>
+        </>
+      )}
       <InputWithLabel
         label={"Name"}
         placeholder={"Enter Team Lead Name"}

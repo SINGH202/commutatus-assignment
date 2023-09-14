@@ -63,3 +63,21 @@ export const isTeamAlreadyExists = (name: string, teams: MemberCardProps[]) => {
   }
   return false;
 };
+
+export const getTeamNames = (teams: MemberCardProps[]) => {
+  const getTeamNamesSet = () => {
+    const teamNamesSet = new Set();
+
+    for (const team of teams) {
+      if (team.teamName !== "") {
+        teamNamesSet.add(team.teamName);
+      }
+    }
+
+    return Array.from(teamNamesSet);
+  };
+
+  const teamNames: any[] = getTeamNamesSet();
+
+  return teamNames;
+};

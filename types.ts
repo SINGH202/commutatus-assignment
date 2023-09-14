@@ -94,5 +94,11 @@ export type AddMemberPopupProps = {
   close: () => void;
   teamType?: string;
   teamName?: string;
+};
 
+export type DropDownProps = {
+  label?: string;
+  selectedOption: string;
+  setSelectedOption: (team: string) => void;
+  availableOptions: string[];
 };
