@@ -127,7 +127,11 @@ export const Team = ({ teamName, members, teamType }: TeamProps) => {
       <PopupEncloser
         show={isAddMemberPopupIsOpen}
         close={() => setIsAddMemberPopupIsOpen(false)}>
-        <AddMemberPopup />
+        <AddMemberPopup
+          close={() => setIsAddMemberPopupIsOpen(false)}
+          teamName={teamName}
+          teamType={teamType}
+        />
       </PopupEncloser>
     </div>
   );

@@ -90,3 +90,9 @@ export type EditMemberPopupProps = {
   teamType?: string;
   memberData: MemberCardProps;
 };
+export type AddMemberPopupProps = {
+  close: () => void;
+  teamType?: string;
+  teamName?: string;
+
+};
