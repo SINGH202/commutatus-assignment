@@ -3,9 +3,37 @@ import { MemberCardProps, TextButtonStatus } from "../../types";
 import { TextButton } from "./TextButton";
 import { PopupEncloser } from "./PopupEncloser";
 import { EditMemberPopup } from "./EditMemberPopup";
+import { useMembersContext } from "@/context/MembersContext";
 
-export const MemberCard = ({ name, role, phone, email }: MemberCardProps) => {
+export const MemberCard = ({
+  id,
+  name,
+  role,
+  phone,
+  email,
+  teamType,
+  teamName,
+}: MemberCardProps) => {
   const [isEditMenuOpen, setIsEditMenuOpen] = useState(false);
+
+  const { data, setData } = useMembersContext();
+
+  let type = teamType?.toLowerCase() || "";
+  const deleteMember = () => {
+    let teamTypeData = data[type];
+    for (const object of teamTypeData) {
+      if (object.id === id) {
+        teamTypeData.splice(teamTypeData.indexOf(object), 1);
+      }
+    }
+
+    let newData = {
+      ...data,
+      [type]: [...teamTypeData],
+    };
+    setData(newData);
+    localStorage.setItem("members_data", JSON.stringify(newData));
+  };
   return (
     <div className="flex flex-col gap-1.5 shadow-lg border bg-white w-[270px] px-4 py-2 rounded-md">
       <span className="text-lg font-medium">{name}</span>
@@ -13,23 +41,39 @@ export const MemberCard = ({ name, role, phone, email }: MemberCardProps) => {
       <span>{email}</span>
       <span>{phone}</span>
       <div className="flex items-center justify-between gap-3">
-        <TextButton
-          label={"Edit"}
-          status={TextButtonStatus.PRIMARY}
-          action={() => setIsEditMenuOpen(true)}
-        />
+        {role !== "CEO" && (
+          <TextButton
+            label={"Edit"}
+            status={TextButtonStatus.PRIMARY}
+            action={() => setIsEditMenuOpen(true)}
+          />
+        )}
         {role === "Member" && (
           <TextButton
             label={"Delete"}
             status={TextButtonStatus.SECONDARY}
-            action={() => {}}
+            action={() => {
+              deleteMember();
+            }}
           />
         )}
       </div>
       <PopupEncloser
         show={isEditMenuOpen}
         close={() => setIsEditMenuOpen(false)}>
-        <EditMemberPopup />
+        <EditMemberPopup
+          close={() => setIsEditMenuOpen(false)}
+          teamType={teamType}
+          memberData={{
+            id,
+            name,
+            role,
+            phone,
+            email,
+            teamType,
+            teamName,
+          }}
+        />
       </PopupEncloser>
     </div>
   );

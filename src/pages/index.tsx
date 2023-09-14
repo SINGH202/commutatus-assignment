@@ -49,7 +49,7 @@ export default function Home() {
       ) : (
         <div className="p-5 md:p-10 w-full">
           <MemberCard
-            name={data?.ceo.name}
+            name={data?.ceo?.name}
             role={data?.ceo?.role}
             email={data?.ceo?.email}
             phone={data?.ceo?.phone}

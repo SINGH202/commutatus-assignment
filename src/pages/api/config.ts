@@ -4,7 +4,7 @@ export const config = {
   ceo: {
     id: "1",
     name: "Ram",
-    phone: "9998887887",
+    phone: "+919398887887",
     email: "ram@gmail.com",
     role: "CEO",
     teamName: "",
@@ -13,15 +13,15 @@ export const config = {
     {
       id: "2",
       name: "Raman",
-      phone: "9998887887",
+      phone: "+916998887887",
       email: "ram@gmail.com",
       role: "Head",
-      teamName: "Lords",
+      teamName: "",
     },
     {
       id: "13",
       name: "Abhay",
-      phone: "9998887887",
+      phone: "+9199498887887",
       email: "ram@gmail.com",
       role: "Leader",
       teamName: "Lords",
@@ -29,7 +29,7 @@ export const config = {
     {
       id: "3",
       name: "Radha",
-      phone: "9998887887",
+      phone: "+919978887887",
       email: "ram@gmail.com",
       role: "Member",
       teamName: "Lords",
@@ -37,7 +37,7 @@ export const config = {
     {
       id: "4",
       name: "Raman",
-      phone: "9998887887",
+      phone: "+919953887887",
       email: "ram@gmail.com",
       role: "Leader",
       teamName: "Lords2",
@@ -45,7 +45,7 @@ export const config = {
     {
       id: "5",
       name: "Radha",
-      phone: "9998887887",
+      phone: "+919638887887",
       email: "ram@gmail.com",
       role: "Member",
       teamName: "Lords2",
@@ -55,15 +55,15 @@ export const config = {
     {
       id: "6",
       name: "Ramesh",
-      phone: "9998887887",
+      phone: "+916398887887",
       email: "ram@gmail.com",
       role: "Head",
-      teamName: "Geeks",
+      teamName: "",
     },
     {
       id: "7",
       name: "Jerry",
-      phone: "9998887887",
+      phone: "+917898887887",
       email: "ram@gmail.com",
       role: "Leader",
       teamName: "Geeks1",
@@ -71,7 +71,7 @@ export const config = {
     {
       id: "8",
       name: "Rajesh",
-      phone: "9998887887",
+      phone: "+918998887887",
       email: "ram@gmail.com",
       role: "Member",
       teamName: "Geeks1",
@@ -79,7 +79,7 @@ export const config = {
     {
       id: "9",
       name: "Ramesh",
-      phone: "9998887887",
+      phone: "+917998887887",
       email: "ram@gmail.com",
       role: "Leader",
       teamName: "Geeks",
@@ -87,7 +87,7 @@ export const config = {
     {
       id: "10",
       name: "Rajesh",
-      phone: "9998887887",
+      phone: "+919998437887",
       email: "ram@gmail.com",
       role: "Member",
       teamName: "Geeks",
@@ -95,7 +95,7 @@ export const config = {
     {
       id: "16",
       name: "Amar",
-      phone: "9998887887",
+      phone: "+9199382887887",
       email: "ram@gmail.com",
       role: "Member",
       teamName: "Geeks",
@@ -103,7 +103,7 @@ export const config = {
     {
       id: "17",
       name: "Aman",
-      phone: "9998887887",
+      phone: "+919681887887",
       email: "ram@gmail.com",
       role: "Member",
       teamName: "Geeks",
@@ -113,15 +113,15 @@ export const config = {
     {
       id: "11",
       name: "Raju",
-      phone: "9998887887",
+      phone: "+919998878084",
       email: "ram@gmail.com",
       role: "Head",
-      teamName: "Falcons",
+      teamName: "",
     },
     {
       id: "14",
       name: "Sumit",
-      phone: "9998887887",
+      phone: "+916949887887",
       email: "ram@gmail.com",
       role: "Leader",
       teamName: "Falcons",
@@ -129,7 +129,7 @@ export const config = {
     {
       id: "12",
       name: "Rajnesh",
-      phone: "9998887887",
+      phone: "+918990887887",
       email: "ram@gmail.com",
       role: "Member",
       teamName: "Falcons",

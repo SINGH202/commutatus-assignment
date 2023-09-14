@@ -28,6 +28,7 @@ export type TeamTypeEncloserProps = {
 
 export type TeamProps = {
   teamName: string;
+  teamType?: string;
   members: MemberCardProps[];
 };
 
@@ -77,4 +78,15 @@ export type MembersProviderProps = {
 export type AddTeamPopupProps = {
   close: () => void;
   teamType?: string;
+};
+export type EditTeamPopupProps = {
+  close: () => void;
+  teamType?: string;
+  teamName?: string;
+};
+
+export type EditMemberPopupProps = {
+  close: () => void;
+  teamType?: string;
+  memberData: MemberCardProps;
 };
