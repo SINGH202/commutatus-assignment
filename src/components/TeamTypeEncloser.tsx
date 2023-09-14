@@ -44,7 +44,7 @@ export const TeamTypeEncloser = ({
           />
         </div>
       </div>
-      {isOpen ? <Teams teams={teams} /> : <></>}
+      {isOpen ? <Teams teams={teams} teamType={teamType} /> : <></>}
       <PopupEncloser
         show={isAddTeamPopupOpen}
         close={() => {

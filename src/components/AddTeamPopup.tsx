@@ -37,12 +37,9 @@ export const AddTeamPopup = ({ close, teamType }: AddTeamPopupProps) => {
       [type]: [...data[type], formData],
     };
     setData(newData);
+    localStorage.setItem("members_data", JSON.stringify(newData));
     close();
   };
-
-  //   useEffect(() => {
-  //     console.log(data);
-  //   }, [data]);
 
   return (
     <div className="flex flex-col items-center p-10 gap-5 popup opacity-90 text-black">
