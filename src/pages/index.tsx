@@ -62,8 +62,8 @@ export default function Home() {
       {isLoading ? (
         "Loading..."
       ) : (
-        <div className="p-5 md:p-10 w-full">
-          {arrangedData?.ceo > 0 && (
+        <div className="p-5 md:p-10 w-full overflow-x-scroll">
+          {arrangedData?.ceo && (
             <MemberCard
               id={arrangedData?.ceo[0]?.id}
               name={arrangedData?.ceo[0]?.name}

@@ -19,8 +19,7 @@ export const Team = ({ teamName, members, teamType }: TeamProps) => {
   let type = teamType?.toLowerCase() || "";
   const deleteTeam = () => {
     let remainingTeams = data.filter(
-      (team: MemberCardProps) =>
-        team.teamName !== teamName && team.role !== "Head"
+      (team: MemberCardProps) => team.teamName !== teamName
     );
 
     setData(remainingTeams);
