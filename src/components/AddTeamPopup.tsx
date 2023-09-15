@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AddTeamPopupProps, TextButtonStatus } from "../../types";
 import { TextButton } from "./TextButton";
 import { InputWithLabel } from "./InputWithLabel";
