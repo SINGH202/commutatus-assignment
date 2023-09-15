@@ -18,21 +18,13 @@ export const MemberCard = ({
 
   const { data, setData } = useMembersContext();
 
-  let type = teamType?.toLowerCase() || "";
-  const deleteMember = () => {
-    let teamTypeData = data[type];
-    for (const object of teamTypeData) {
-      if (object.id === id) {
-        teamTypeData.splice(teamTypeData.indexOf(object), 1);
-      }
-    }
+  const deleteMember = (id: string) => {
+    let teamsAfterDeletion = data.filter(
+      (item: MemberCardProps) => item.id !== id
+    );
 
-    let newData = {
-      ...data,
-      [type]: [...teamTypeData],
-    };
-    setData(newData);
-    localStorage.setItem("members_data", JSON.stringify(newData));
+    setData(teamsAfterDeletion);
+    localStorage.setItem("members_data", JSON.stringify(teamsAfterDeletion));
   };
   return (
     <div className="flex flex-col gap-1.5 shadow-lg border bg-white w-[270px] px-4 py-2 rounded-md">
@@ -53,7 +45,7 @@ export const MemberCard = ({
             label={"Delete"}
             status={TextButtonStatus.SECONDARY}
             action={() => {
-              deleteMember();
+              deleteMember(id);
             }}
           />
         )}

@@ -13,6 +13,7 @@ export const MembersProvider = (props: MembersProviderProps) => {
   const { children } = props;
 
   const [data, setData] = useState();
+  const [arrangedData, setArrangedData] = useState();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -22,6 +23,8 @@ export const MembersProvider = (props: MembersProviderProps) => {
     setData,
     isLoading,
     setIsLoading,
+    arrangedData,
+    setArrangedData,
   };
   return (
     <MembersContext.Provider value={defaultContext}>

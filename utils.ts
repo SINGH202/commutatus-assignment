@@ -10,8 +10,7 @@ export const getData = () => {
 };
 
 export const addData = () => {
-  const groupedByTeamType = groupObjectsByTeamType(membersData);
-  localStorage.setItem("members_data", JSON.stringify(groupedByTeamType));
+  localStorage.setItem("members_data", JSON.stringify(membersData));
 };
 
 export function debounce(
@@ -87,7 +86,7 @@ export const groupObjectsByTeamType = (
   data: MemberCardProps[]
 ): Record<string, MemberCardProps[]> => {
   const result: Record<string, MemberCardProps[]> = {};
-
+  if (!data) return {};
   data.forEach((item) => {
     const { teamType } = item;
     if (!result[teamType]) {

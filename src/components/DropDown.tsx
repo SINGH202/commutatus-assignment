@@ -22,7 +22,7 @@ export const DropDown = ({
         <span className="font-sans">{selectedOption}</span>
         <Image width={24} height={24} src={"/down-arrow-hollow.svg"} alt={""} />
         {isDropDownOpen && (
-          <div className="flex flex-col w-full absolute top-14 right-0 h-20 z-10 bg-white rounded-lg text-[#5E605E] overflow-y-scroll ">
+          <div className="flex flex-col w-full absolute top-14 right-0 max-h-20 z-10 bg-white rounded-lg text-[#5E605E] overflow-y-scroll ">
             {availableOptions ? (
               availableOptions.map((option, index) => (
                 <div
