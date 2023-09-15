@@ -3,21 +3,10 @@ import { TeamTypeEncloserProps } from "../../types";
 import { MemberCard } from "./MemberCard";
 import { useState } from "react";
 import { Team } from "./Team";
+import { getTeamNames } from "../../utils";
 
 export const Teams = ({ teams, teamType }: TeamTypeEncloserProps) => {
-  const getTeamNames = () => {
-    const teamNamesSet = new Set();
-
-    for (const team of teams) {
-      if (team.teamName !== "") {
-        teamNamesSet.add(team.teamName);
-      }
-    }
-
-    return Array.from(teamNamesSet);
-  };
-
-  const teamNames: any[] = getTeamNames();
+  const teamNames: any[] = getTeamNames(teams);
 
   return (
     <div className="flex flex-col gap-5 ml-[7px] px-4 ">
@@ -32,7 +21,7 @@ export const Teams = ({ teams, teamType }: TeamTypeEncloserProps) => {
             email={head?.email}
             phone={head?.phone}
             teamName={head?.teamName}
-            teamType={teamType}
+            teamType={teamType || ""}
           />
         ))}
       <div className="flex flex-col gap-5 ml-14">

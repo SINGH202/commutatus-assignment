@@ -1,11 +1,6 @@
 import Image from "next/image";
-import {
-  MemberCardProps,
-  TeamTypeEncloserProps,
-  TextButtonStatus,
-} from "../../types";
-import { useEffect, useState } from "react";
-import { MemberCard } from "./MemberCard";
+import { TeamTypeEncloserProps, TextButtonStatus } from "../../types";
+import { useState } from "react";
 import { Teams } from "./Teams";
 import { TextButton } from "./TextButton";
 import { AddTeamPopup } from "./AddTeamPopup";
@@ -15,7 +10,7 @@ export const TeamTypeEncloser = ({
   teams,
   teamType,
 }: TeamTypeEncloserProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [isAddTeamPopupOpen, setIsAddTeamPopupOpen] = useState(false);
   return (
     <div className="flex flex-col gap-5 ml-14 mt-5">

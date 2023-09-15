@@ -17,7 +17,7 @@ export type MemberCardProps = {
   role: string;
   email: string;
   phone: string;
-  teamType?: string;
+  teamType: string;
   teamName: string;
 };
 
@@ -94,5 +94,11 @@ export type AddMemberPopupProps = {
   close: () => void;
   teamType?: string;
   teamName?: string;
+};
 
+export type DropDownProps = {
+  label?: string;
+  selectedOption: string;
+  setSelectedOption: (team: string) => void;
+  availableOptions: string[];
 };

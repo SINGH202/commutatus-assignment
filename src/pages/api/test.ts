@@ -135,4 +135,3 @@ const config = {
   ],
 };
 const newConfig = { ...config, hr: [...config["hr"], { test: "test" }] };
-console.log(newConfig);
