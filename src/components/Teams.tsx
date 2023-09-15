@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { TeamTypeEncloserProps } from "../../types";
 import { MemberCard } from "./MemberCard";
-import { useState } from "react";
 import { Team } from "./Team";
 import { getTeamNames } from "../../utils";
 

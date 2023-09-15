@@ -14,7 +14,7 @@ export const AddMemberPopup = ({
   close,
 }: AddMemberPopupProps) => {
   const { data, setData } = useMembersContext();
-  const type = teamType?.toLocaleLowerCase() || "hr";
+  const type = teamType?.toLocaleLowerCase() || "";
 
   const [formData, setFormData] = useState({
     id: uuidv4(),
@@ -22,6 +22,7 @@ export const AddMemberPopup = ({
     email: "",
     phone: "",
     teamName: teamName,
+    teamType: type,
     role: "Member",
   });
 
@@ -35,10 +36,8 @@ export const AddMemberPopup = ({
   };
 
   const handleAddData = () => {
-    const newData = {
-      ...data,
-      [type]: [...data[type], formData],
-    };
+    const newData = [...data, formData];
+
     setData(newData);
     localStorage.setItem("members_data", JSON.stringify(newData));
     close();

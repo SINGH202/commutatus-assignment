@@ -6,19 +6,19 @@ import {
   debounce,
   getData,
   groupObjectsByTeamType,
-  searchObjects,
+  searchMember,
 } from "../../utils";
 import { MemberCard } from "@/components/MemberCard";
 import { TeamTypeEncloser } from "@/components/TeamTypeEncloser";
 import { useMembersContext } from "@/context/MembersContext";
-import { MemberCardProps } from "../../types";
 import { membersData } from "./api/config";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [searchText, setSearchText] = useState("");
-  const { data, setData, isLoading } = useMembersContext();
+  const { data, setData, arrangedData, setArrangedData, isLoading } =
+    useMembersContext();
   const handleChange = (text: string) => {
     setSearchText(text);
     handleSearch(text);
@@ -26,9 +26,9 @@ export default function Home() {
 
   const handleSearch = useCallback(
     debounce((query: string) => {
-      const res = searchObjects(membersData, query);
+      const res = searchMember(membersData, query);
       const groupedByTeamType = groupObjectsByTeamType(res);
-      setData(groupedByTeamType);
+      setArrangedData(groupedByTeamType);
     }, 1000),
     []
   );
@@ -39,15 +39,18 @@ export default function Home() {
         addData();
       }
       let localData = getData();
-
-      const groupedByTeamType = groupObjectsByTeamType(membersData);
-
-      setData(groupedByTeamType);
+      setData(localData);
     } catch (error) {
       console.log(error);
       return;
     }
   }, []);
+
+  useEffect(() => {
+    const groupedByTeamType = groupObjectsByTeamType(data);
+
+    setArrangedData(groupedByTeamType);
+  }, [data]);
 
   return (
     <main
@@ -60,27 +63,25 @@ export default function Home() {
         "Loading..."
       ) : (
         <div className="p-5 md:p-10 w-full">
-          {data?.ceo > 0 && (
+          {arrangedData?.ceo > 0 && (
             <MemberCard
-              name={data?.ceo[0]?.name}
-              role={data?.ceo[0]?.role}
-              email={data?.ceo[0]?.email}
-              phone={data?.ceo[0]?.phone}
+              id={arrangedData?.ceo[0]?.id}
+              name={arrangedData?.ceo[0]?.name}
+              role={arrangedData?.ceo[0]?.role}
+              email={arrangedData?.ceo[0]?.email}
+              phone={arrangedData?.ceo[0]?.phone}
               teamName={""}
               teamType=""
             />
           )}
+          <TeamTypeEncloser teamType={"HR"} teams={arrangedData?.hr} />
 
-          {data?.hr && <TeamTypeEncloser teamType={"HR"} teams={data?.hr} />}
-          {data?.engineering && (
-            <TeamTypeEncloser
-              teamType={"Engineering"}
-              teams={data?.engineering}
-            />
-          )}
-          {data?.design && (
-            <TeamTypeEncloser teamType={"Design"} teams={data?.design} />
-          )}
+          <TeamTypeEncloser
+            teamType={"Engineering"}
+            teams={arrangedData?.engineering}
+          />
+
+          <TeamTypeEncloser teamType={"Design"} teams={arrangedData?.design} />
         </div>
       )}
     </main>

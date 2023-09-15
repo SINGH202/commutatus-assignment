@@ -17,10 +17,10 @@ export const EditMemberPopup = ({
   close,
   memberData,
 }: EditMemberPopupProps) => {
-  const { data, setData } = useMembersContext();
+  const { data, setData, arrangedData } = useMembersContext();
   const type = teamType?.toLocaleLowerCase() || "";
 
-  const teamNames = getTeamNames(data[type]);
+  const teamNames = getTeamNames(arrangedData[type]);
 
   const [formData, setFormData] = useState({
     id: memberData?.id,
@@ -28,16 +28,17 @@ export const EditMemberPopup = ({
     email: memberData?.email,
     phone: memberData?.phone,
     teamName: memberData?.teamName,
+    teamType: type,
     role: memberData?.role,
   });
 
   const updateMemberData = () => {
-    const membersData = data[type];
+    const membersData = data;
 
     const remainingMembers = membersData.filter(
       (member: MemberCardProps) => member?.id !== memberData?.id
     );
-    const newData = { ...data, [type]: [...remainingMembers, formData] };
+    const newData = [...remainingMembers, formData];
     setData(newData);
     localStorage.setItem("members_data", JSON.stringify(newData));
     close();

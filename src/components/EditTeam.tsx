@@ -19,21 +19,18 @@ export const EditTeamPopup = ({
 
   let type = teamType?.toLowerCase() || "";
   const updateTeamName = () => {
-    let teamWithChanges = data[type].filter(
+    let teamWithChanges = data.filter(
       (team: MemberCardProps) =>
         team.teamName === teamName && team.role !== "Head"
     );
-    let teamWithoutChanges = data[type].filter(
+    let teamWithoutChanges = data.filter(
       (team: MemberCardProps) =>
         team.teamName !== teamName && team.role !== "Head"
     );
     teamWithChanges.forEach((team: MemberCardProps) => {
       team.teamName = newTeamName;
     });
-    const newData = {
-      ...data,
-      type: [...teamWithoutChanges, ...teamWithChanges],
-    };
+    const newData = [...teamWithoutChanges, ...teamWithChanges];
     setData(newData);
     localStorage.setItem("members_data", JSON.stringify(newData));
     close();

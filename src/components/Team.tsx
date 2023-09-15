@@ -18,18 +18,13 @@ export const Team = ({ teamName, members, teamType }: TeamProps) => {
 
   let type = teamType?.toLowerCase() || "";
   const deleteTeam = () => {
-    let remainingTeams = data[type].filter(
+    let remainingTeams = data.filter(
       (team: MemberCardProps) =>
         team.teamName !== teamName && team.role !== "Head"
     );
 
-    let newData = {
-      ...data,
-      [type]: [...remainingTeams],
-    };
-
-    setData(newData);
-    localStorage.setItem("members_data", JSON.stringify(newData));
+    setData(remainingTeams);
+    localStorage.setItem("members_data", JSON.stringify(remainingTeams));
   };
 
   return (

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AddTeamPopupProps, TextButtonStatus } from "../../types";
 import { TextButton } from "./TextButton";
 import { InputWithLabel } from "./InputWithLabel";
@@ -9,14 +9,15 @@ import "react-phone-input-2/lib/style.css";
 const { v4: uuidv4 } = require("uuid");
 
 export const AddTeamPopup = ({ close, teamType }: AddTeamPopupProps) => {
-  const { data, setData } = useMembersContext();
-  const type = teamType || "hr";
+  const { data, setData, arrangedData } = useMembersContext();
+  const type = teamType?.toLocaleLowerCase() || "";
   const [formData, setFormData] = useState({
     id: uuidv4(),
     name: "",
     email: "",
     phone: "",
     teamName: "",
+    teamType: type,
     role: "Leader",
   });
 
@@ -27,15 +28,12 @@ export const AddTeamPopup = ({ close, teamType }: AddTeamPopupProps) => {
       formData?.phone !== "" &&
       formData?.email !== "" &&
       isValidEmail(formData?.email) &&
-      !isTeamAlreadyExists(formData?.teamName, data[type])
+      !isTeamAlreadyExists(formData?.teamName, arrangedData[type])
     );
   };
 
   const handleAddData = () => {
-    const newData = {
-      ...data,
-      [type]: [...data[type], formData],
-    };
+    const newData = [...data, formData];
     setData(newData);
     localStorage.setItem("members_data", JSON.stringify(newData));
     close();
@@ -50,7 +48,7 @@ export const AddTeamPopup = ({ close, teamType }: AddTeamPopupProps) => {
         onChange={(value) => {
           setFormData({ ...formData, teamName: value.target.value });
         }}
-        isInvalid={isTeamAlreadyExists(formData?.teamName, data[type])}
+        isInvalid={isTeamAlreadyExists(formData?.teamName, arrangedData[type])}
         errorText="Team already exists"
         value={formData?.teamName}
       />

@@ -12,7 +12,7 @@ export enum TeamTypes {
 }
 
 export type MemberCardProps = {
-  id?: string;
+  id: string;
   name: string;
   role: string;
   email: string;
@@ -69,6 +69,8 @@ export type MembersContextType = {
   isLoading: boolean;
   data: any;
   setData: (data: any) => void;
+  arrangedData: any;
+  setArrangedData: (data: any) => void;
 };
 
 export type MembersProviderProps = {
