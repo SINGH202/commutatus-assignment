@@ -54,7 +54,7 @@ export const isValidEmail = (email: string) => {
 
 export const isTeamAlreadyExists = (name: string, teams: MemberCardProps[]) => {
   const teamNamesSet = new Set();
-
+  if (!teams) return false;
   for (const team of teams) {
     teamNamesSet.add(team.teamName.toLocaleLowerCase());
   }
@@ -67,6 +67,8 @@ export const isTeamAlreadyExists = (name: string, teams: MemberCardProps[]) => {
 export const getTeamNames = (teams: MemberCardProps[]) => {
   const getTeamNamesSet = () => {
     const teamNamesSet = new Set();
+
+    if (!teams) return [];
 
     for (const team of teams) {
       if (team.teamName !== "") {
@@ -98,7 +100,7 @@ export const groupObjectsByTeamType = (
   return result;
 };
 
-export function searchObjects(
+export function searchMember(
   data: MemberCardProps[],
   searchText: string
 ): MemberCardProps[] {

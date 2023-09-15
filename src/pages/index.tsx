@@ -6,7 +6,7 @@ import {
   debounce,
   getData,
   groupObjectsByTeamType,
-  searchObjects,
+  searchMember,
 } from "../../utils";
 import { MemberCard } from "@/components/MemberCard";
 import { TeamTypeEncloser } from "@/components/TeamTypeEncloser";
@@ -26,7 +26,7 @@ export default function Home() {
 
   const handleSearch = useCallback(
     debounce((query: string) => {
-      const res = searchObjects(membersData, query);
+      const res = searchMember(membersData, query);
       const groupedByTeamType = groupObjectsByTeamType(res);
       setArrangedData(groupedByTeamType);
     }, 1000),
@@ -74,22 +74,14 @@ export default function Home() {
               teamType=""
             />
           )}
+          <TeamTypeEncloser teamType={"HR"} teams={arrangedData?.hr} />
 
-          {arrangedData?.hr && (
-            <TeamTypeEncloser teamType={"HR"} teams={arrangedData?.hr} />
-          )}
-          {arrangedData?.engineering && (
-            <TeamTypeEncloser
-              teamType={"Engineering"}
-              teams={arrangedData?.engineering}
-            />
-          )}
-          {arrangedData?.design && (
-            <TeamTypeEncloser
-              teamType={"Design"}
-              teams={arrangedData?.design}
-            />
-          )}
+          <TeamTypeEncloser
+            teamType={"Engineering"}
+            teams={arrangedData?.engineering}
+          />
+
+          <TeamTypeEncloser teamType={"Design"} teams={arrangedData?.design} />
         </div>
       )}
     </main>
