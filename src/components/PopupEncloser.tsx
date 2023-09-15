@@ -7,15 +7,13 @@ export const PopupEncloser = ({
 }: PopupEncloserProps) => {
   return show ? (
     <div
-      className="z-50 fixed left-0 right-0 top-0 bottom-1 w-[100vw] h-[100vh] grid place-items-center bg-black bg-opacity-75 inset-0 overflow-x-scroll no-scrollbar"
+      className="z-50 fixed left-0 right-0 top-0 bottom-0 grid place-items-center bg-black bg-opacity-75 inset-0"
       onClick={() => {
-        // close modal when outside of modal is clicked
         close(false);
       }}>
       <div
         className="relative max-w-[480px] w-11/12 sm:w-full rounded-2xl"
         onClick={(e) => {
-          // do not close modal if anything inside modal content is clicked
           e.stopPropagation();
         }}>
         <button
