@@ -9,7 +9,7 @@ import { AddMemberPopup } from "./AddMemberPopup";
 import { useMembersContext } from "@/context/MembersContext";
 
 export const Team = ({ teamName, members, teamType }: TeamProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const [isAddMemberPopupIsOpen, setIsAddMemberPopupIsOpen] = useState(false);
   const [isEditTeamPopupOpen, setIsEditTeamPopupOpen] = useState(false);
@@ -92,7 +92,7 @@ export const Team = ({ teamName, members, teamType }: TeamProps) => {
                 email={head?.email}
                 phone={head?.phone}
                 teamName={head?.teamName}
-                teamType={teamType}
+                teamType={teamType || ""}
               />
             ))}
           <div className="flex gap-3 flex-wrap">
@@ -107,7 +107,7 @@ export const Team = ({ teamName, members, teamType }: TeamProps) => {
                   email={member?.email}
                   phone={member?.phone}
                   teamName={member?.teamName}
-                  teamType={teamType}
+                  teamType={teamType || ""}
                 />
               ))}
           </div>

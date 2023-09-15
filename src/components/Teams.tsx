@@ -6,7 +6,6 @@ import { Team } from "./Team";
 import { getTeamNames } from "../../utils";
 
 export const Teams = ({ teams, teamType }: TeamTypeEncloserProps) => {
-  
   const teamNames: any[] = getTeamNames(teams);
 
   return (
@@ -22,7 +21,7 @@ export const Teams = ({ teams, teamType }: TeamTypeEncloserProps) => {
             email={head?.email}
             phone={head?.phone}
             teamName={head?.teamName}
-            teamType={teamType}
+            teamType={teamType || ""}
           />
         ))}
       <div className="flex flex-col gap-5 ml-14">

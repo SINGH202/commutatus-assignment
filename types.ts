@@ -17,7 +17,7 @@ export type MemberCardProps = {
   role: string;
   email: string;
   phone: string;
-  teamType?: string;
+  teamType: string;
   teamName: string;
 };
 

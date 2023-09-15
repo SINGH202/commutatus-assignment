@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   EditMemberPopupProps,
   MemberCardProps,
@@ -33,9 +33,7 @@ export const EditMemberPopup = ({
 
   const updateMemberData = () => {
     const membersData = data[type];
-    let memberWithChange = membersData.find(
-      (member: MemberCardProps) => member?.id === memberData?.id
-    );
+
     const remainingMembers = membersData.filter(
       (member: MemberCardProps) => member?.id !== memberData?.id
     );
@@ -47,7 +45,7 @@ export const EditMemberPopup = ({
 
   return (
     <div className="flex flex-col items-center p-10 gap-5 popup opacity-90 text-black">
-      {memberData?.role !== "Leader" && (
+      {memberData?.role !== "Head" && memberData?.role !== "Leader" && (
         <>
           <DropDown
             label="Select Team"

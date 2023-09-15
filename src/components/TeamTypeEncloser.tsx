@@ -10,7 +10,7 @@ export const TeamTypeEncloser = ({
   teams,
   teamType,
 }: TeamTypeEncloserProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [isAddTeamPopupOpen, setIsAddTeamPopupOpen] = useState(false);
   return (
     <div className="flex flex-col gap-5 ml-14 mt-5">

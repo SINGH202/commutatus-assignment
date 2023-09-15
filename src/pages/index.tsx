@@ -1,10 +1,18 @@
 import { Inter } from "next/font/google";
 import { useCallback, useEffect, useState } from "react";
 import { SearchBar } from "@/components/SearchBar";
-import { addData, debounce, getData } from "../../utils";
+import {
+  addData,
+  debounce,
+  getData,
+  groupObjectsByTeamType,
+  searchObjects,
+} from "../../utils";
 import { MemberCard } from "@/components/MemberCard";
 import { TeamTypeEncloser } from "@/components/TeamTypeEncloser";
 import { useMembersContext } from "@/context/MembersContext";
+import { MemberCardProps } from "../../types";
+import { membersData } from "./api/config";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +26,9 @@ export default function Home() {
 
   const handleSearch = useCallback(
     debounce((query: string) => {
-      console.log(query);
+      const res = searchObjects(membersData, query);
+      const groupedByTeamType = groupObjectsByTeamType(res);
+      setData(groupedByTeamType);
     }, 1000),
     []
   );
@@ -29,8 +39,10 @@ export default function Home() {
         addData();
       }
       let localData = getData();
-      console.timeLog(localData);
-      setData(localData);
+
+      const groupedByTeamType = groupObjectsByTeamType(membersData);
+
+      setData(groupedByTeamType);
     } catch (error) {
       console.log(error);
       return;
@@ -48,20 +60,27 @@ export default function Home() {
         "Loading..."
       ) : (
         <div className="p-5 md:p-10 w-full">
-          <MemberCard
-            name={data?.ceo?.name}
-            role={data?.ceo?.role}
-            email={data?.ceo?.email}
-            phone={data?.ceo?.phone}
-            teamName={""}
-          />
+          {data?.ceo > 0 && (
+            <MemberCard
+              name={data?.ceo[0]?.name}
+              role={data?.ceo[0]?.role}
+              email={data?.ceo[0]?.email}
+              phone={data?.ceo[0]?.phone}
+              teamName={""}
+              teamType=""
+            />
+          )}
 
-          <TeamTypeEncloser teamType={"HR"} teams={data?.hr} />
-          <TeamTypeEncloser
-            teamType={"Engineering"}
-            teams={data?.engineering}
-          />
-          <TeamTypeEncloser teamType={"Design"} teams={data?.design} />
+          {data?.hr && <TeamTypeEncloser teamType={"HR"} teams={data?.hr} />}
+          {data?.engineering && (
+            <TeamTypeEncloser
+              teamType={"Engineering"}
+              teams={data?.engineering}
+            />
+          )}
+          {data?.design && (
+            <TeamTypeEncloser teamType={"Design"} teams={data?.design} />
+          )}
         </div>
       )}
     </main>

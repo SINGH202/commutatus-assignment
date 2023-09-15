@@ -1,4 +1,4 @@
-import { config } from "@/pages/api/config";
+import { membersData } from "@/pages/api/config";
 import { MemberCardProps } from "./types";
 
 export const getData = () => {
@@ -10,7 +10,8 @@ export const getData = () => {
 };
 
 export const addData = () => {
-  localStorage.setItem("members_data", JSON.stringify(config));
+  const groupedByTeamType = groupObjectsByTeamType(membersData);
+  localStorage.setItem("members_data", JSON.stringify(groupedByTeamType));
 };
 
 export function debounce(
@@ -81,3 +82,32 @@ export const getTeamNames = (teams: MemberCardProps[]) => {
 
   return teamNames;
 };
+
+export const groupObjectsByTeamType = (
+  data: MemberCardProps[]
+): Record<string, MemberCardProps[]> => {
+  const result: Record<string, MemberCardProps[]> = {};
+
+  data.forEach((item) => {
+    const { teamType } = item;
+    if (!result[teamType]) {
+      result[teamType] = [];
+    }
+    result[teamType].push(item);
+  });
+
+  return result;
+};
+
+export function searchObjects(
+  data: MemberCardProps[],
+  searchText: string
+): MemberCardProps[] {
+  return data.filter((item) => {
+    return (
+      item.name.toLowerCase().includes(searchText.toLowerCase()) ||
+      item.phone.includes(searchText) ||
+      item.email.toLowerCase().includes(searchText.toLowerCase())
+    );
+  });
+}
