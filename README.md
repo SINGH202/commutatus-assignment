@@ -1,6 +1,6 @@
 # Employee Management App Readme
 
-Welcome to the Employee Management App! This application is designed to help you manage your organization's employees and teams efficiently. It was developed using Next.js, Tailwind CSS, and TypeScript by a single developer in just 7 days.
+Welcome to the Employee Management App! This application is designed to help you manage your organization's employees and teams efficiently. It was developed using Next.js, Tailwind CSS, and TypeScript by [SINGH202](https://github.com/SINGH202) developer in just 7 days.
 
 ## Table of Contents
 
