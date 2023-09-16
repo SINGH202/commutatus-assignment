@@ -3,7 +3,7 @@ import { SearchBarProps } from "../../types";
 export const SearchBar = ({ searchText, setSearchText }: SearchBarProps) => {
   return (
     <div className="flex flex-col md:flex-row gap-5 justify-between items-center p-5 md:p-10 w-full">
-      <span className="text-2xl sm:text-3xl font-semibold font-serif">
+      <span className="text-xl sm:text-2xl font-semibold font-serif">
         Employees Management System
       </span>
       <input

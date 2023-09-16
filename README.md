@@ -1,38 +1,88 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Employee Management App Readme
+
+Welcome to the Employee Management App! This application is designed to help you manage your organization's employees and teams efficiently. It was developed using Next.js, Tailwind CSS, and TypeScript by a single developer in just 7 days.
+
+## Table of Contents
+
+1. [Features](#features)
+2. [Getting Started](#getting-started)
+3. [Usage](#usage)
+4. [Development](#development)
+5. [Contributing](#contributing)
+6. [License](#license)
+
+## Features
+
+The Employee Management App offers the following key features:
+
+1. **View Employee Information**: You can easily see the position name along with the employee's name, making it simple to identify each employee's role within the organization.
+
+2. **Add New Team Member**: You have the ability to add new team members to your organization, allowing for seamless onboarding.
+
+3. **Change Team Membership**: You can change the team of a team member, ensuring that employees are placed in the appropriate teams. Please note that employees from the HR team cannot be moved to the design team, preserving organizational structure.
+
+4. **Remove Team Member**: When necessary, you can remove a team member from the system.
+
+5. **Update Employee Information**: You can update employee information to keep it accurate and up-to-date.
+
+6. **Create and Edit Teams**: You can create new teams or edit existing ones to reflect changes in your organization's structure.
+
+7. **Filter Employees**: You have the ability to filter employees by Employee Name, Phone Number, and Email ID, making it easy to locate specific individuals within the organization.
 
 ## Getting Started
 
-First, run the development server:
+To get started with the Employee Management App, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+1. **Clone the Repository**: Clone this repository to your local machine.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Install Dependencies**: Make sure you have Node.js and npm (or yarn) installed. Navigate to the project directory and run:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+3. **Configure Environment Variables**: You may need to configure environment variables, such as database connection details or authentication settings, in a `.env` file. Refer to the provided example `.env.example` file for guidance.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+4. **Start the Application**: Run the following command to start the development server:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-## Learn More
+5. **Access the App**: Open your web browser and navigate to `http://localhost:3000` to access the Employee Management App.
 
-To learn more about Next.js, take a look at the following resources:
+## Usage
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Once you have the Employee Management App up and running, you can start using it to manage your employees and teams as described in the Features section above.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Development
 
-## Deploy on Vercel
+If you want to contribute to the development of this application, please follow these guidelines:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Fork the repository to your GitHub account.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+2. Create a new branch for your feature or bugfix:
+
+   ```bash
+   git checkout -b feature/my-new-feature
+   ```
+
+3. Make your changes and commit them with clear and concise commit messages.
+
+4. Push your changes to your forked repository:
+
+   ```bash
+   git push origin feature/my-new-feature
+   ```
+
+5. Create a pull request to the original repository.
+
+6. Wait for review and address any feedback provided.
+
+## Contributing
+
+Contributions to the Employee Management App are welcome! If you encounter any issues or have ideas for improvements, please open an issue or submit a pull request following the guidelines in the Development section above.
