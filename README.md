@@ -8,8 +8,7 @@ Welcome to the Employee Management App! This application is designed to help you
 2. [Getting Started](#getting-started)
 3. [Usage](#usage)
 4. [Development](#development)
-5. [Contributing](#contributing)
-6. [License](#license)
+
 
 ## Features
 
@@ -83,6 +82,3 @@ If you want to contribute to the development of this application, please follow 
 
 6. Wait for review and address any feedback provided.
 
-## Contributing
-
-Contributions to the Employee Management App are welcome! If you encounter any issues or have ideas for improvements, please open an issue or submit a pull request following the guidelines in the Development section above.
